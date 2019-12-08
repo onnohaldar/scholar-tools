@@ -2,7 +2,6 @@
   "name": "scholar-tools",
   "version": "0.0.1",
   "description": "Tools to get Google Scholar results as Data",
-  "main": "index.js",
   "scripts": {
     "test": "echo test"
   },
@@ -20,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/onnohaldar/scholar-tools/issues"
   },
-  "homepage": "https://github.com/onnohaldar/scholar-tools#readme"
+  "homepage": "https://github.com/onnohaldar/scholar-tools#readme",
+  "dependencies": {
+    "google-scholar": "^1.5.1"
+  }
 }
