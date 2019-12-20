@@ -1,8 +1,8 @@
 console.log('test');
 
-let scholar = require('google-scholar')
+var scholar = require('google-scholar')
 
-scholar.all('explainability of adm')
+scholar.all('chair')
   .then(resultsObj => {
     console.log(resultsObj)
   });

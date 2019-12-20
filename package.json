@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Tools to get Google Scholar results as Data",
   "scripts": {
-    "test": "echo test"
+    "test": "echo test",
+    "start": "ts-node index.ts"
   },
   "repository": {
     "type": "git",
@@ -21,10 +22,13 @@
   },
   "homepage": "https://github.com/onnohaldar/scholar-tools#readme",
   "dependencies": {
-    "google-scholar": "^1.5.1"
+    "google-scholar": "^1.5.1",
+    "node-html-parser": "^1.1.16",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.14",
+    "@types/request": "^2.48.4",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.3"
   }
