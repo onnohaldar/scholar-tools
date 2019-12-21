@@ -68,17 +68,13 @@ csvtojson({
         matrixes.push({ article: article, levels: levels});
       } else {
         // add new level to existing article
-        const iL1 = matrixes[i].levels[0].findIndex(level => level.includes(row.Level1));
+        const iL1 = matrixes[i].levels.findIndex(level => level.id == levels[0].id);
         if (iL1 == -1) {
           // add new level 1
-          matrixes[i].levels = levels;
+          matrixes[i].levels.push(levels[0]);
         } else {
-          // const iL2 = matrixes[i].levels[1][iL1].findIndex(level => level.includes(row.Level2));
-          
+
         }
-        // const iL1 = matrixes[i].levels.findIndex(level1 => level1.findIndex(name => name ===)) 
-        // console.log(matrixes[i].levels.find(level => level.))
-        // matrixes[i].levels.push(level);
       }
     }
   }
