@@ -73,7 +73,15 @@ csvtojson({
           // add new level 1
           matrixes[i].levels.push(levels[0]);
         } else {
-
+          const iL2 = matrixes[i].levels[iL1].subLevels.findIndex(level => level.id == row.Level2);
+          if (iL2 == -1) {
+            // add new level 2
+            matrixes[i].levels[iL1].subLevels.push({ id: row.Level2, subLevels: [
+              { id: row.Level3 }
+            ] });
+          } else {
+            // add new level 3 (unique levels value for each article)
+          }
         }
       }
     }
