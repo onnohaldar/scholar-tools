@@ -1,4 +1,5 @@
 import * as csvtojson from 'csvtojson';
+import { writeFileSync } from 'fs';
 
 interface Article {
   authors: string;
@@ -72,5 +73,5 @@ csvtojson({
       }
     }
   }
-  console.log(matrixes);
+  writeFileSync('data/matrixes.json', JSON.stringify(matrixes, null, 2));
 });
