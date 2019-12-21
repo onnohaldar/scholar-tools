@@ -67,20 +67,21 @@ csvtojson({
         // add new article
         matrixes.push({ article: article, levels: levels});
       } else {
-        // add new level to existing article
+        // add new level(n) to article
         const iL1 = matrixes[i].levels.findIndex(level => level.id == levels[0].id);
         if (iL1 == -1) {
-          // add new level 1
+          // add new level 1 (to article)
           matrixes[i].levels.push(levels[0]);
         } else {
           const iL2 = matrixes[i].levels[iL1].subLevels.findIndex(level => level.id == row.Level2);
           if (iL2 == -1) {
-            // add new level 2
+            // add new level 2 (to level 1 of article)
             matrixes[i].levels[iL1].subLevels.push({ id: row.Level2, subLevels: [
               { id: row.Level3 }
             ] });
           } else {
-            // add new level 3 (unique levels value for each article)
+            // add new level 3 (to level 2 of article)
+            matrixes[i].levels[iL1].subLevels[iL2].subLevels.push({ id: row.Level3 });
           }
         }
       }
