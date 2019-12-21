@@ -13,9 +13,8 @@ interface Article {
 };
 
 interface Level {
-  level1: string;
-  level2: string;
-  level3: string
+  id: string;
+  subLevels?: Level[];
 }
 
 interface ArticleMatrix { 
@@ -42,16 +41,16 @@ csvtojson({
       year: row.Year,
       publisher: row.Publisher
     };
-    const level: Level = {
-      level1: row.Level1,
-      level2: row.Level2,
-      level3: row.Level3
-    };
-
+    const levels: Level[] = [ 
+      { id: row.Level1, subLevels: [ 
+        { id: row.Level2, subLevels: [
+          { id: row.Level3 }
+        ] } ] } ];
+        
     // check martrixes
     if (matrixes.length == 0) {
       // add first article
-      matrixes.push({ article: article, levels: [level]}); 
+      matrixes.push({ article: article, levels: levels}); 
     } else {
       // looking for existing articles
       const i = matrixes.findIndex(matrix => 
@@ -66,10 +65,20 @@ csvtojson({
         );
       if (i == -1) {
         // add new article
-        matrixes.push({ article: article, levels: [level]});
+        matrixes.push({ article: article, levels: levels});
       } else {
         // add new level to existing article
-        matrixes[i].levels.push(level);
+        const iL1 = matrixes[i].levels[0].findIndex(level => level.includes(row.Level1));
+        if (iL1 == -1) {
+          // add new level 1
+          matrixes[i].levels = levels;
+        } else {
+          // const iL2 = matrixes[i].levels[1][iL1].findIndex(level => level.includes(row.Level2));
+          
+        }
+        // const iL1 = matrixes[i].levels.findIndex(level1 => level1.findIndex(name => name ===)) 
+        // console.log(matrixes[i].levels.find(level => level.))
+        // matrixes[i].levels.push(level);
       }
     }
   }
